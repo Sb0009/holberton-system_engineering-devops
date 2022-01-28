@@ -1,2 +1,2 @@
-!:mime TYPE
+#!/bin/bash
 file *
