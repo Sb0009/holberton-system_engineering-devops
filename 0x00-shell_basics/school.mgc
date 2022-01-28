@@ -1,0 +1,2 @@
+#!/bin/bashfile
+file --mime-type -m holberton.mgc *
