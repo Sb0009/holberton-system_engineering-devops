@@ -1,4 +1,2 @@
-magic
-tech minimum
-timestamp 1643401545
-<< end >>
+#!/bin/bash
+file -C -m school.mgc
