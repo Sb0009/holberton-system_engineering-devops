@@ -1,5 +1,5 @@
-0x03. Shell, init files, variables and expansions
 
+0x03. Shell, init files, variables and expansions
 
 
 Resources
@@ -61,14 +61,3 @@ The alias Command
     How to create an alias
     How to list aliases
     How to temporarily disable an alias
-
-Other help pages
-
-    How to execute commands from a file in the current shell
-
-Requirements
-General
-
-    Allowed editors: vi, vim, emacs
-    All your scripts will be tested on Ubuntu 20.04 LTS
-     
