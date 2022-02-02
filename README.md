@@ -32,7 +32,7 @@ General What does RTFM mean?
  What are the characteristics of hidden files and how to list them
  What does the command cd - do Looking Around 
  ![RTFD](https://user-images.githubusercontent.com/96126445/152234191-44621cb3-2df3-4136-8211-05bd91ff805c.jpg)
-![RTFD](https://user-images.githubusercontent.com/96126445/152234241-c7e3652e-ceac-44dd-854e-dde2cea28365.jpg)
+
 
  What do the commands ls, less, file 
 do How do you use options and arguments with commands Understand the ls long format and how to display it 
