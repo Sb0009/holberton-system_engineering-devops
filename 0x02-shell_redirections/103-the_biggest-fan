@@ -1,0 +1,2 @@
+#!/bin/bash
+sort|cut-1|uniq -c|sort -nr|head -11|cut -d|" " -f 6
