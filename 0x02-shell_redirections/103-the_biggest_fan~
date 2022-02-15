@@ -1,2 +1,0 @@
-#!/bin/bash
-grep 'Requested path' | sort | uniq
