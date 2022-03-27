@@ -1,4 +1,7 @@
-![Blue Technology Lifestyle and Hobbies T-Shirt](https://user-images.githubusercontent.com/96126445/160299629-bfe53540-ac0b-476f-9d73-3981461015f5.png)
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/96126445/160299629-bfe53540-ac0b-476f-9d73-3981461015f5.png" width="500">
+<p/>
 # 0x01. Shell, permissions
 
 
