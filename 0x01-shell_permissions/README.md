@@ -1,7 +1,4 @@
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/96126445/160299629-bfe53540-ac0b-476f-9d73-3981461015f5.png" width="300">
-<p/>
 # 0x01. Shell, permissions
 
 
@@ -37,3 +34,8 @@ How to print real and effective user and group IDs
 How to print the groups a user is in
 How to print the effective userid
 
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/96126445/160299629-bfe53540-ac0b-476f-9d73-3981461015f5.png" width="300">
+<p/>
