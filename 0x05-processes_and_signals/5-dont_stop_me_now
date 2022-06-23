@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Script to finish the past program
+IFS=$'\n'
+x=$(ps -e | pgrep 'bash' | tail -3 | head -1)
+
+kill "$x"
