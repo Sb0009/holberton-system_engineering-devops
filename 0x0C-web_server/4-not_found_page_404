@@ -4,7 +4,7 @@
 # "Ceci n'est pas une page"
 sudo apt-get update
 sudo apt-get -y install nginx
-echo "Les rois du Web" | sudo tee /var/www/html/index.html
+echo "Hello World" | sudo tee /var/www/html/index.html
 echo -e "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/error_404.html
 sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me mamlaka.tech permanent;' /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a error_page 404 /error_404.html; location = /error_404.html {root /usr/share/nginx/html;\n internal;}' /etc/nginx/sites-available/default
