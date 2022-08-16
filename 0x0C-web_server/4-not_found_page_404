@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-# Install nginx on my web01 server
-# Configure nginx server to have a custom 404 page that contains
-# "Ceci n'est pas une page"
-sudo apt-get update
-sudo apt-get -y install nginx
-echo "Hello World" | sudo tee /var/www/html/index.html
-echo -e "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/error_404.html
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me mamlaka.tech permanent;' /etc/nginx/sites-available/default
-sudo sed -i '/listen 80 default_server/a error_page 404 /error_404.html; location = /error_404.html {root /usr/share/nginx/html;\n internal;}' /etc/nginx/sites-available/default
-sudo nginx -t
-sudo service nginx restart
+# NOT FOUND - PAGE 404
+apt-get update && apt-get install nginx -y
+
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/error_404.html
+
+found="server_name _;"
+adding="\n\tlocation /redirect_me {\n\t\treturn 301 https://youtube.com/clip/UgkxdTtNavadjDHXvbahamufHluS4ZkB1y2K;\n\t}"
+sed -i "/$found/a\\$adding" /etc/nginx/sites-available/default
+
+
+adding="\n\terror_page 404 /error_404.html;"
+sed -i "/$found/a\\$adding" /etc/nginx/sites-available/default
+
+service nginx restart
