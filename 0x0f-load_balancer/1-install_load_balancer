@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-# Install and configure HAproxy on your lb-01 server.
-# Admin web-01 and web-02
-sudo apt-get install -y software-properties-common
-sudo add-apt-repository -y 
+# # Configure Nginx so that its HTTP response contains a custom header
 
-sudo apt-get -y update
-sudo apt-get install -y haproxy
+sudo apt-get update -y
+apt-get -y upgrade
+sudo apt-get install -y nginx
+
+echo "Hello World" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/error_404.html
+sed -i "/server_name _;/a error_page 404 /error_404.html;\nlocation = /error_404.html {\nroot /var/www/html;\ninternal;\n}" /etc/nginx/sites-available/default
+sed -i "/server_name _;/a add_header X-Served-By $HOSTNAMEhostname;" /etc/nginx/sites-available/default
+
+sudo service nginx restart
