@@ -5,7 +5,7 @@ sudo apt-get update -y
 sudo apt-get install -y nginx
 
 echo "Hello World" | sudo tee /var/www/html/index.nginx-debian.html
-sudo sed -i "19i rewrite ^/redirect_me https://youtube;" /etc/nginx/sites-enabled/default
+sudo sed -i "19i rewrite ^/redirect_me  https://youtube.com/clip/UgkxdTtNavadjDHXvbahamufHluS4ZkB1y2K;\n\t}"" /etc/nginx/sites-enabled/default
 
 echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/error_404.html
 sudo sed -i '37i error_404 /error_404.html;\nlocation = /error_404.html {\nroot /usr/share/nginx/html; \ninternal;\n}\n' /etc/nginx/sites-enabled/default
