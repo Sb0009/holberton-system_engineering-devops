@@ -1,13 +1,35 @@
 #!/usr/bin/env bash
-# # Configure Nginx so that its HTTP response contains a custom header
+# Install your load balancer
 
-sudo apt-get update -y
-apt-get -y upgrade
-sudo apt-get install -y nginx
+# Install HAProxy
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo apt-get -y install haproxy
 
+<<<<<<< HEAD
 echo "Hello World" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/error_404.html
 sed -i "/server_name _;/a error_page 404 /404.html;\nlocation = /404.html {\nroot /var/www/html;\ninternal;\n}" /etc/nginx/sites-available/default
 sed -i "/server_name _;/a add_header X-Served-By $HOSTNAMEhostname;" /etc/nginx/sites-available/default
+=======
+# Configure the load balancer
+f_name="frontend http"
+f_bind="bind *:80"
+f_mode="mode http"
+f_default="default_backend web-backend"
+frontend="$f_name\n\t$f_bind\n\t$f_mode\n\t$f_default\n"
+>>>>>>> 5ed494003c59d04acbf85126c0368e60001a7ae7
 
-sudo service nginx restart
+b_name="backend web-backend"
+b_balance="balance roundrobin"
+b_mode="mode http"
+b_server_1="server 3685-web-01 3.89.137.116 check"
+b_server_2="server 3685-web-02 54.226.237.32:80 check"
+backend="$b_name\n\t$b_balance\n\t$b_server_1\n\t$b_server_2"
+
+# Command to add the configuration on the file /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a $frontend" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a $backend" /etc/haproxy/haproxy.cfg
+
+# Restart service HAProxy
+sudo service haproxy start
