@@ -6,5 +6,5 @@ echo "Hello World" > /var/www/html/index.nginx-debian.html
 
 found="server_name _;"
 adding="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com;\n\t}"
-sed -i "/$found/a\\$adding" /etc/nginx/sites-available/default
+sudo sed -i "/$found/a\\$adding" /etc/nginx/sites-available/default
 sudo -s service nginx restart

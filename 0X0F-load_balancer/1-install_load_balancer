@@ -6,19 +6,18 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install haproxy
 
-<<<<<<< HEAD
 echo "Hello World" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/error_404.html
 sed -i "/server_name _;/a error_page 404 /404.html;\nlocation = /404.html {\nroot /var/www/html;\ninternal;\n}" /etc/nginx/sites-available/default
 sed -i "/server_name _;/a add_header X-Served-By $HOSTNAMEhostname;" /etc/nginx/sites-available/default
-=======
+
 # Configure the load balancer
 f_name="frontend http"
 f_bind="bind *:80"
 f_mode="mode http"
 f_default="default_backend web-backend"
 frontend="$f_name\n\t$f_bind\n\t$f_mode\n\t$f_default\n"
->>>>>>> 5ed494003c59d04acbf85126c0368e60001a7ae7
+
 
 b_name="backend web-backend"
 b_balance="balance roundrobin"
