@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#file to configure Nginx so that its HTTP response contains a custom header in
+# our server
+
+sudo apt-get update -y
+sudo apt-get install -y nginx
+
