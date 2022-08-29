@@ -2,9 +2,7 @@
 # redirect me.
 sudo -s apt-get update && sudo -s apt-get install nginx -y
 
-echo "Hello World" > /var/www/html/index.nginx-debian.html
+sudo echo "Hello World" > /var/www/html/index.nginx-debian.html
 
-found="server_name _;"
-adding="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com;\n\t}"
-sudo sed -i '37i\rewrite ^/redirect_me http://mamlaka.tech permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/server_name _;/a location /redirect_me { rewrite ^ https://youtube.com/clip/UgkxW-QVVHvP0Z0iUFpK9TERbdGU2aQIJCpn/ permanent; }' /etc/nginx/sites-available/default
 sudo service nginx restart
