@@ -3,6 +3,7 @@
 # Nginx should be listening on port 80
 # When sent a GET request at root, return a page that contains
 # one string "Hello World"
+
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install nginx
