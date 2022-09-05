@@ -35,7 +35,7 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 frontend www-https
-        bind *:443 ssl crt /etc/haproxy/ssl/www.out-of-memory.space.pem
+        bind *:443 ssl crt /etc/ssl/www.mamlaka.tech/www.mamlaka.tech.pem
         reqadd X-Forwarded-Proto:\ https
         default_backend web-backend
 
@@ -43,6 +43,12 @@ frontend www-http
          bind *:80
          redirect scheme https code 301 if !{ ssl_fc }
          default_backend web-backend
+		 
+    	mode http
+    	bind :80
+    	bind :443 ssl crt /etc/ssl/certs/ssl.pem
+    	http-request redirect scheme https unless { ssl_fc }
+    	default_backend servers
 
 backend letsencrypt-backend
         server letsencrypt 127.0.0.1:8888
@@ -52,3 +58,7 @@ backend web-backend
         balance roundrobin
         server 4330-web-01 3.80.49.230:80 check
         server 4330-web-02 204.236.197.173::80 check
+
+
+
+		
