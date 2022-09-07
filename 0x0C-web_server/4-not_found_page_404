@@ -2,7 +2,7 @@
 # Redirect
 SU=$(whoami)
 DIR="/etc/nginx/sites-available/default"
-NEW_URL="https://youtube.com/in/"
+NEW_URL="https://youtube.com/"
 OLD_URL="/redirect_me"
 REDIRECT="\tlocation ${OLD_URL} {\n\t\treturn 301 ${NEW_URL};\n\t}"
 DIR_SERVER="/var/www/html/"
@@ -21,6 +21,7 @@ $SU apt-get -y install nginx
 
 
 $SU mkdir --parents "${DIR_SERVER}"
+sudo chown -R ubuntu /var/www/html/index.html
 $SU echo "Hello World" > "${DIR_SERVER}index.html"
 $SU echo "Ceci n'est pas une page" > "${DIR_SERVER}error404.html"
 
