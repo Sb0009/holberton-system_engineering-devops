@@ -16,7 +16,7 @@ frontend="$f_name\n\t$f_bind\n\t$f_mode\n\t$f_default\n"
 b_name="backend web-backend"
 b_balance="balance roundrobin"
 b_mode="mode http"
-b_server_1="server 4330-web-01 3.80.49.230:80 check"
+b_server_1="server 4330-web-01 72.44.57.101:80 check"
 b_server_2="server 4330-web-02 204.236.197.173:80 check"
 backend="$b_name\n\t$b_balance\n\t$b_server_1\n\t$b_server_2"
 

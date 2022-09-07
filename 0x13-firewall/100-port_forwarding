@@ -70,7 +70,7 @@ web-01 is forwarding port 8080/TCP to port 80/TCP
 
 # allow MULTICAST mDNS for service discovery (be sure the MULTICAST line above
 # is uncommented)
--A ufw-before-input -p udp -d 3.80.49.230---dport 5353 -j ACCEPT
+-A ufw-before-input -p udp -d 72.44.57.101---dport 5353 -j ACCEPT
 
 # allow MULTICAST UPnP for service discovery (be sure the MULTICAST line above
 # is uncommented)
