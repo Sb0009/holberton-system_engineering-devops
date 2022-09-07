@@ -1,13 +1,30 @@
 #!/usr/bin/env bash
-# # Configure Nginx so that its HTTP response contains a custom header
+# Redirect
+SU=$(whoami)
+DIR="/etc/nginx/sites-available/default"
+NEW_URL="https://youtube.com/in/"
+OLD_URL="/redirect_me"
+REDIRECT="\tlocation ${OLD_URL} {\n\t\treturn 301 ${NEW_URL};\n\t}"
+DIR_SERVER="/var/www/html/"
+ERROR404="server {\n\terror_page 404 \/error404.html;"
 
-sudo apt-get update -y
-apt-get -y upgrade
-sudo apt-get install -y nginx
+if [[ "$SU" == "root" ]]; then
+	SU="sudo"
+else
+	echo "your need run with prefix sudo"
+	exit
+fi
 
-echo "Hello World" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /var/www/html/404.html
+$SU usermod -aG $SU "$(whoami)"
+$SU apt-get -y update
+$SU apt-get -y install nginx
 
-sed -i "/server_name _;/a error_page 404 /error_404.html;\nlocation = /404.html {\nroot /var/www/html;\ninternal;\n}" /etc/nginx/sites-available/default
 
-service nginx restart
+$SU mkdir --parents "${DIR_SERVER}"
+$SU echo "Hello World" > "${DIR_SERVER}index.html"
+$SU echo "Ceci n'est pas une page" > "${DIR_SERVER}error404.html"
+
+
+$SU sed -i "/server_name _;/ a\\${REDIRECT}" $DIR
+sed -i "s/^server\s{/$ERROR404/1" $DIR
+$SU service nginx restart

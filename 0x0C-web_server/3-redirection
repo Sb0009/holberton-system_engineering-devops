@@ -21,5 +21,5 @@ $SU apt-get -y install nginx
 $SU echo "Hello World" > ~/index.html
 $SU mkdir --parents /var/www/html/
 $SU cp ~/index.html /var/www/html/
-$SU sed -i "/server_name _;/ a\\${REDIRECT}" $DIR
-$SU service nginx restart01~
+$SU sed -i '/server_name _;/a location /redirect_me { rewrite ^ https://www.youtube.com/ permanent; }' /etc/nginx/sites-available/default
+$SU service nginx restart
