@@ -21,8 +21,8 @@ b_server_2="server 4330-web-02 204.236.197.173:80 check"
 backend="$b_name\n\t$b_balance\n\t$b_server_1\n\t$b_server_2"
 
 # Command to add the configuration on the file /etc/haproxy/haproxy.cfg
-sed -i "$ a $frontend" /etc/haproxy/haproxy.cfg
-sed -i "$ a $backend" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a $frontend" /etc/haproxy/haproxy.cfg
+sudo sed -i "$ a $backend" /etc/haproxy/haproxy.cfg
 
 # Restart service HAProxy
 sudo service haproxy start
