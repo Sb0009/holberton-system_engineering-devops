@@ -1,25 +1,9 @@
 #!/usr/bin/env bash
-# Redirect
-SU=$(whoami)
-DIR="/etc/nginx/sites-available/default"
-NEW_URL="https://google.com/"
-OLD_URL="/redirect_me"
-REDIRECT="\tlocation ${OLD_URL} {\n\t\treturn 301 ${NEW_URL};\n\t}"
+#scripts to redirect NGINX server
 
-if [[ "$SU" == "root" ]];
-then
-    SU="sudo"
-else
-    echo "You need run with sudo"
-    exit
-fi
-
-$SU apt-get -y update
-$SU apt-get -y install nginx
-
-
-$SU echo "Hello World" > ~/index.html
-$SU mkdir --parents /var/www/html/
-$SU cp ~/index.html /var/www/html/
-$SU sed -i '/server_name _;/a location /redirect_me { rewrite ^ https://www.youtube.com/ permanent; }' /etc/nginx/sites-available/default
-$SU service nginx restart
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World" > /var/www/html/index.nginx-debian.html
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
