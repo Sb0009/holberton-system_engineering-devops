@@ -57,3 +57,4 @@ backend web-backend
         balance roundrobin
         server web1 72.44.57.101:80 check
         server web2 204.236.197.173::80 check
+        
