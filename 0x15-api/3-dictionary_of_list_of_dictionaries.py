@@ -39,4 +39,4 @@ if __name__ == "__main__":
                 data.get(user_id).append(dic)
 
         with open('todo_all_employees.json', 'w', newline='') as jsonfile:
-            json.dump(data, jsonfile
+            json.dump(data, jsonfile)
