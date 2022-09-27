@@ -9,7 +9,7 @@ def recurse(subreddit, hot_list=[], after=""):
     """Querying Reddit API, and returns all
     hot articles for a given subreddit."""
 
-    url = "https://api.reddit.com/r/{}/hot".format(subreddit)
+    url = "https://api.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-Agent': 'sisi'}
     arg1 = {"limit": 100, "after": after}
     resp = requests.get(url, params=arg1, headers=headers)
