@@ -3,6 +3,7 @@
 2-recurse
 """
 import requests
+import json
 
 
 def recurse(subreddit, hot_list=[], after=""):
